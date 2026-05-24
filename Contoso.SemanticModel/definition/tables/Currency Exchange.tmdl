@@ -1,0 +1,55 @@
+table 'Currency Exchange'
+	lineageTag: c0000006-0000-4000-8000-000000000001
+	sourceLineageTag: [dbo].[currencyexchange]
+
+	column Date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c0000006-0000-4000-8000-000000000002
+		sourceLineageTag: Date
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'From Currency'
+		dataType: string
+		lineageTag: c0000006-0000-4000-8000-000000000003
+		sourceLineageTag: FromCurrency
+		summarizeBy: none
+		sourceColumn: FromCurrency
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'To Currency'
+		dataType: string
+		lineageTag: c0000006-0000-4000-8000-000000000004
+		sourceLineageTag: ToCurrency
+		summarizeBy: none
+		sourceColumn: ToCurrency
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Exchange
+		dataType: decimal
+		formatString: 0.00000
+		lineageTag: c0000006-0000-4000-8000-000000000005
+		sourceLineageTag: Exchange
+		summarizeBy: sum
+		sourceColumn: Exchange
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Currency Exchange' = entity
+		mode: directLake
+		source
+			entityName: currencyexchange
+			schemaName: dbo
+			expressionSource: 'DirectLake - Contoso'
+
+	changedProperty = Name
+

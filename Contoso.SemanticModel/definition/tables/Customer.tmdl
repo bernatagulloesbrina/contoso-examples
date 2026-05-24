@@ -1,0 +1,263 @@
+table Customer
+	lineageTag: c0000001-0000-4000-8000-000000000001
+	sourceLineageTag: [dbo].[customer]
+
+	column 'Customer Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: c0000001-0000-4000-8000-000000000002
+		sourceLineageTag: CustomerKey
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Geo Area Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: c0000001-0000-4000-8000-000000000003
+		sourceLineageTag: GeoAreaKey
+		summarizeBy: none
+		sourceColumn: GeoAreaKey
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c0000001-0000-4000-8000-000000000004
+		sourceLineageTag: StartDT
+		summarizeBy: none
+		sourceColumn: StartDT
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'End Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c0000001-0000-4000-8000-000000000005
+		sourceLineageTag: EndDT
+		summarizeBy: none
+		sourceColumn: EndDT
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Continent
+		dataType: string
+		lineageTag: c0000001-0000-4000-8000-000000000006
+		sourceLineageTag: Continent
+		summarizeBy: none
+		sourceColumn: Continent
+
+		annotation SummarizationSetBy = Automatic
+
+	column Gender
+		dataType: string
+		lineageTag: c0000001-0000-4000-8000-000000000007
+		sourceLineageTag: Gender
+		summarizeBy: none
+		sourceColumn: Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column Title
+		dataType: string
+		lineageTag: c0000001-0000-4000-8000-000000000008
+		sourceLineageTag: Title
+		summarizeBy: none
+		sourceColumn: Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Given Name'
+		dataType: string
+		lineageTag: c0000001-0000-4000-8000-000000000009
+		sourceLineageTag: GivenName
+		summarizeBy: none
+		sourceColumn: GivenName
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Middle Initial'
+		dataType: string
+		lineageTag: c0000001-0000-4000-8000-00000000000a
+		sourceLineageTag: MiddleInitial
+		summarizeBy: none
+		sourceColumn: MiddleInitial
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Surname
+		dataType: string
+		lineageTag: c0000001-0000-4000-8000-00000000000b
+		sourceLineageTag: Surname
+		summarizeBy: none
+		sourceColumn: Surname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Street Address'
+		dataType: string
+		lineageTag: c0000001-0000-4000-8000-00000000000c
+		sourceLineageTag: StreetAddress
+		summarizeBy: none
+		sourceColumn: StreetAddress
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: c0000001-0000-4000-8000-00000000000d
+		sourceLineageTag: City
+		summarizeBy: none
+		sourceColumn: City
+		dataCategory: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		lineageTag: c0000001-0000-4000-8000-00000000000e
+		sourceLineageTag: State
+		summarizeBy: none
+		sourceColumn: State
+		dataCategory: StateOrProvince
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'State Full'
+		dataType: string
+		lineageTag: c0000001-0000-4000-8000-00000000000f
+		sourceLineageTag: StateFull
+		summarizeBy: none
+		sourceColumn: StateFull
+		dataCategory: StateOrProvince
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Zip Code'
+		dataType: string
+		lineageTag: c0000001-0000-4000-8000-000000000010
+		sourceLineageTag: ZipCode
+		summarizeBy: none
+		sourceColumn: ZipCode
+		dataCategory: PostalCode
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: c0000001-0000-4000-8000-000000000011
+		sourceLineageTag: Country
+		summarizeBy: none
+		sourceColumn: Country
+		dataCategory: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Country Full'
+		dataType: string
+		lineageTag: c0000001-0000-4000-8000-000000000012
+		sourceLineageTag: CountryFull
+		summarizeBy: none
+		sourceColumn: CountryFull
+		dataCategory: Country
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Birthday
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c0000001-0000-4000-8000-000000000013
+		sourceLineageTag: Birthday
+		summarizeBy: none
+		sourceColumn: Birthday
+
+		annotation SummarizationSetBy = Automatic
+
+	column Age
+		dataType: int64
+		formatString: 0
+		lineageTag: c0000001-0000-4000-8000-000000000014
+		sourceLineageTag: Age
+		summarizeBy: sum
+		sourceColumn: Age
+
+		annotation SummarizationSetBy = Automatic
+
+	column Occupation
+		dataType: string
+		lineageTag: c0000001-0000-4000-8000-000000000015
+		sourceLineageTag: Occupation
+		summarizeBy: none
+		sourceColumn: Occupation
+
+		annotation SummarizationSetBy = Automatic
+
+	column Company
+		dataType: string
+		lineageTag: c0000001-0000-4000-8000-000000000016
+		sourceLineageTag: Company
+		summarizeBy: none
+		sourceColumn: Company
+
+		annotation SummarizationSetBy = Automatic
+
+	column Vehicle
+		dataType: string
+		lineageTag: c0000001-0000-4000-8000-000000000017
+		sourceLineageTag: Vehicle
+		summarizeBy: none
+		sourceColumn: Vehicle
+
+		annotation SummarizationSetBy = Automatic
+
+	column Latitude
+		dataType: decimal
+		lineageTag: c0000001-0000-4000-8000-000000000018
+		sourceLineageTag: Latitude
+		summarizeBy: none
+		sourceColumn: Latitude
+		dataCategory: Latitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column Longitude
+		dataType: decimal
+		lineageTag: c0000001-0000-4000-8000-000000000019
+		sourceLineageTag: Longitude
+		summarizeBy: none
+		sourceColumn: Longitude
+		dataCategory: Longitude
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Customer = entity
+		mode: directLake
+		source
+			entityName: customer
+			schemaName: dbo
+			expressionSource: 'DirectLake - Contoso'
+
+	changedProperty = Name
+

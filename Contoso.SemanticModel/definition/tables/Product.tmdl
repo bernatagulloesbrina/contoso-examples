@@ -1,0 +1,160 @@
+table Product
+	lineageTag: c0000002-0000-4000-8000-000000000001
+	sourceLineageTag: [dbo].[product]
+
+	column 'Product Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: c0000002-0000-4000-8000-000000000002
+		sourceLineageTag: ProductKey
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Code'
+		dataType: string
+		lineageTag: c0000002-0000-4000-8000-000000000003
+		sourceLineageTag: ProductCode
+		summarizeBy: none
+		sourceColumn: ProductCode
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Name'
+		dataType: string
+		lineageTag: c0000002-0000-4000-8000-000000000004
+		sourceLineageTag: ProductName
+		summarizeBy: none
+		sourceColumn: ProductName
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Manufacturer
+		dataType: string
+		lineageTag: c0000002-0000-4000-8000-000000000005
+		sourceLineageTag: Manufacturer
+		summarizeBy: none
+		sourceColumn: Manufacturer
+
+		annotation SummarizationSetBy = Automatic
+
+	column Brand
+		dataType: string
+		lineageTag: c0000002-0000-4000-8000-000000000006
+		sourceLineageTag: Brand
+		summarizeBy: none
+		sourceColumn: Brand
+
+		annotation SummarizationSetBy = Automatic
+
+	column Color
+		dataType: string
+		lineageTag: c0000002-0000-4000-8000-000000000007
+		sourceLineageTag: Color
+		summarizeBy: none
+		sourceColumn: Color
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Weight Unit'
+		dataType: string
+		lineageTag: c0000002-0000-4000-8000-000000000008
+		sourceLineageTag: WeightUnit
+		summarizeBy: none
+		sourceColumn: WeightUnit
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weight
+		dataType: decimal
+		lineageTag: c0000002-0000-4000-8000-000000000009
+		sourceLineageTag: Weight
+		summarizeBy: sum
+		sourceColumn: Weight
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cost
+		dataType: decimal
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: c0000002-0000-4000-8000-00000000000a
+		sourceLineageTag: Cost
+		summarizeBy: sum
+		sourceColumn: Cost
+
+		annotation SummarizationSetBy = Automatic
+
+	column Price
+		dataType: decimal
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: c0000002-0000-4000-8000-00000000000b
+		sourceLineageTag: Price
+		summarizeBy: sum
+		sourceColumn: Price
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Category Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: c0000002-0000-4000-8000-00000000000c
+		sourceLineageTag: CategoryKey
+		summarizeBy: none
+		sourceColumn: CategoryKey
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Category Name'
+		dataType: string
+		lineageTag: c0000002-0000-4000-8000-00000000000d
+		sourceLineageTag: CategoryName
+		summarizeBy: none
+		sourceColumn: CategoryName
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sub Category Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: c0000002-0000-4000-8000-00000000000e
+		sourceLineageTag: SubCategoryKey
+		summarizeBy: none
+		sourceColumn: SubCategoryKey
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sub Category Name'
+		dataType: string
+		lineageTag: c0000002-0000-4000-8000-00000000000f
+		sourceLineageTag: SubCategoryName
+		summarizeBy: none
+		sourceColumn: SubCategoryName
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Product = entity
+		mode: directLake
+		source
+			entityName: product
+			schemaName: dbo
+			expressionSource: 'DirectLake - Contoso'
+
+	changedProperty = Name
+
