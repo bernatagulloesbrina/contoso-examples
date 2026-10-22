@@ -1,0 +1,177 @@
+table 'Order Rows'
+	lineageTag: c0000005-0000-4000-8000-000000000001
+	sourceLineageTag: [dbo].[orderrows]
+
+	measure 'Sales Amount' = SUMX('Order Rows', 'Order Rows'[Quantity] * 'Order Rows'[Net Price])
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: c0000005-0000-4000-8000-00000000ff01
+
+	measure 'Total Cost' = SUMX('Order Rows', 'Order Rows'[Quantity] * 'Order Rows'[Unit Cost])
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: c0000005-0000-4000-8000-00000000ff02
+
+	measure Margin = [Sales Amount] - [Total Cost]
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: c0000005-0000-4000-8000-00000000ff03
+
+	measure 'Margin %' = DIVIDE([Margin], [Sales Amount])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: c0000005-0000-4000-8000-00000000ff04
+
+	/// Sales Amount, year-to-date.
+	measure 'Sales Amount YTD' = Local.TimeIntel.YTD([Sales Amount])
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Time Intelligence
+		lineageTag: c0000005-0000-4000-8000-00000000ff10
+
+	/// Sales Amount in the same period of the previous year.
+	measure 'Sales Amount PY' = Local.TimeIntel.PY([Sales Amount])
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Time Intelligence
+		lineageTag: c0000005-0000-4000-8000-00000000ff11
+
+	/// Prior-year year-to-date Sales Amount.
+	measure 'Sales Amount PYTD' = Local.TimeIntel.PYTD([Sales Amount])
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Time Intelligence
+		lineageTag: c0000005-0000-4000-8000-00000000ff12
+
+	/// Year-over-year change in Sales Amount (current - prior year).
+	measure 'Sales Amount YoY' = Local.TimeIntel.YoY([Sales Amount])
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Time Intelligence
+		lineageTag: c0000005-0000-4000-8000-00000000ff13
+
+	/// Year-over-year Sales Amount growth percentage.
+	measure 'Sales Amount YoY %' = Local.TimeIntel.YoYPct([Sales Amount])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Time Intelligence
+		lineageTag: c0000005-0000-4000-8000-00000000ff14
+
+	/// Total Cost, year-to-date.
+	measure 'Total Cost YTD' = Local.TimeIntel.YTD([Total Cost])
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Time Intelligence
+		lineageTag: c0000005-0000-4000-8000-00000000ff20
+
+	/// Total Cost in the same period of the previous year.
+	measure 'Total Cost PY' = Local.TimeIntel.PY([Total Cost])
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Time Intelligence
+		lineageTag: c0000005-0000-4000-8000-00000000ff21
+
+	/// Margin, year-to-date.
+	measure 'Margin YTD' = Local.TimeIntel.YTD([Margin])
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Time Intelligence
+		lineageTag: c0000005-0000-4000-8000-00000000ff30
+
+	/// Margin in the same period of the previous year.
+	measure 'Margin PY' = Local.TimeIntel.PY([Margin])
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Time Intelligence
+		lineageTag: c0000005-0000-4000-8000-00000000ff31
+
+	/// Year-over-year Margin growth percentage.
+	measure 'Margin YoY %' = Local.TimeIntel.YoYPct([Margin])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Time Intelligence
+		lineageTag: c0000005-0000-4000-8000-00000000ff32
+
+	/// Margin % in the same period of the previous year.
+	measure 'Margin % PY' = Local.TimeIntel.PY([Margin %])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Time Intelligence
+		lineageTag: c0000005-0000-4000-8000-00000000ff40
+
+	column 'Order Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: c0000005-0000-4000-8000-000000000002
+		sourceLineageTag: OrderKey
+		summarizeBy: none
+		sourceColumn: OrderKey
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Row Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: c0000005-0000-4000-8000-000000000003
+		sourceLineageTag: RowNumber
+		summarizeBy: none
+		sourceColumn: RowNumber
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: c0000005-0000-4000-8000-000000000004
+		sourceLineageTag: ProductKey
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: int64
+		formatString: #,0
+		lineageTag: c0000005-0000-4000-8000-000000000005
+		sourceLineageTag: Quantity
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unit Price'
+		dataType: decimal
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: c0000005-0000-4000-8000-000000000006
+		sourceLineageTag: UnitPrice
+		summarizeBy: sum
+		sourceColumn: UnitPrice
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Net Price'
+		dataType: decimal
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: c0000005-0000-4000-8000-000000000007
+		sourceLineageTag: NetPrice
+		summarizeBy: sum
+		sourceColumn: NetPrice
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unit Cost'
+		dataType: decimal
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: c0000005-0000-4000-8000-000000000008
+		sourceLineageTag: UnitCost
+		summarizeBy: sum
+		sourceColumn: UnitCost
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Order Rows' = entity
+		mode: directLake
+		source
+			entityName: orderrows
+			schemaName: dbo
+			expressionSource: 'DirectLake - Contoso'
+
+	changedProperty = Name
+

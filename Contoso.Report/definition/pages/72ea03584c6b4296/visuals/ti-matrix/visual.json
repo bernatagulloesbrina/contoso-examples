@@ -1,0 +1,190 @@
+{
+  "name": "ti-matrix",
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "queryRef": "Date.Year",
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Date"
+                    }
+                  },
+                  "Property": "Year"
+                }
+              },
+              "nativeQueryRef": "Year"
+            },
+            {
+              "queryRef": "Order Rows.Sales Amount",
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Order Rows"
+                    }
+                  },
+                  "Property": "Sales Amount"
+                }
+              },
+              "nativeQueryRef": "Sales Amount"
+            },
+            {
+              "queryRef": "Order Rows.Sales Amount YTD",
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Order Rows"
+                    }
+                  },
+                  "Property": "Sales Amount YTD"
+                }
+              },
+              "nativeQueryRef": "Sales Amount YTD"
+            },
+            {
+              "queryRef": "Order Rows.Sales Amount PY",
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Order Rows"
+                    }
+                  },
+                  "Property": "Sales Amount PY"
+                }
+              },
+              "nativeQueryRef": "Sales Amount PY"
+            },
+            {
+              "queryRef": "Order Rows.Sales Amount YoY %",
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Order Rows"
+                    }
+                  },
+                  "Property": "Sales Amount YoY %"
+                }
+              },
+              "nativeQueryRef": "Sales Amount YoY %"
+            },
+            {
+              "queryRef": "Order Rows.Margin",
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Order Rows"
+                    }
+                  },
+                  "Property": "Margin"
+                }
+              },
+              "nativeQueryRef": "Margin"
+            },
+            {
+              "queryRef": "Order Rows.Margin YoY %",
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Order Rows"
+                    }
+                  },
+                  "Property": "Margin YoY %"
+                }
+              },
+              "nativeQueryRef": "Margin YoY %"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Order Rows"
+                  }
+                },
+                "Property": "Sales Amount"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {},
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Year-by-Year Breakdown'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "position": {
+    "x": 24,
+    "y": 532,
+    "z": 0,
+    "width": 1232,
+    "height": 168,
+    "tabOrder": 0
+  },
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json"
+}

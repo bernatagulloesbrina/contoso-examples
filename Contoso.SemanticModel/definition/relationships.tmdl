@@ -1,0 +1,16 @@
+relationship 'Order Rows to Orders'
+	fromColumn: 'Order Rows'.'Order Key'
+	toColumn: Orders.'Order Key'
+
+relationship 'Order Rows to Product'
+	fromColumn: 'Order Rows'.'Product Key'
+	toColumn: Product.'Product Key'
+
+relationship 'Orders to Customer'
+	fromColumn: Orders.'Customer Key'
+	toColumn: Customer.'Customer Key'
+
+relationship 'Orders to Date'
+	fromColumn: Orders.'Order Date'
+	toColumn: Date.Date
+

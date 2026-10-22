@@ -1,0 +1,11 @@
+/// Direct Lake on OneLake source for the Contoso lakehouse. Reads OneLake Delta
+/// directly via AzureStorage.DataLake (no SQL endpoint, no VARCHAR(8000) cap).
+expression 'DirectLake - Contoso' =
+		let
+		    Source = AzureStorage.DataLake("https://onelake.dfs.fabric.microsoft.com/897aef99-5f20-4e16-8808-02a38a082d62/7ae2b96b-e08a-4906-a61c-aea93553c073", [HierarchicalNavigation=true])
+		in
+		    Source
+	lineageTag: a1b2c3d4-e5f6-4708-8192-a0b1c2d3e4f5
+
+	annotation PBI_IncludeFutureArtifacts = False
+

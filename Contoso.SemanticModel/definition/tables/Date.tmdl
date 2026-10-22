@@ -1,0 +1,247 @@
+/// Gregorian calendar dimension. Marked as a Date table (dataCategory: Time)
+/// for classic time intelligence (SAMEPERIODLASTYEAR, etc.) AND carries a
+/// Gregorian calendar child object for the new calendar-based time intel
+/// functions (requires compatibilityLevel >= 1701).
+table Date
+	lineageTag: c0000003-0000-4000-8000-000000000001
+	sourceLineageTag: [dbo].[date]
+	dataCategory: Time
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: General Date
+		lineageTag: c0000003-0000-4000-8000-000000000002
+		sourceLineageTag: Date
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date Key'
+		dataType: string
+		lineageTag: c0000003-0000-4000-8000-000000000003
+		sourceLineageTag: DateKey
+		summarizeBy: none
+		sourceColumn: DateKey
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: c0000003-0000-4000-8000-000000000004
+		sourceLineageTag: Year
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Quarter'
+		dataType: string
+		lineageTag: c0000003-0000-4000-8000-000000000005
+		sourceLineageTag: YearQuarter
+		summarizeBy: none
+		sourceColumn: YearQuarter
+		sortByColumn: 'Year Quarter Number'
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Quarter Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: c0000003-0000-4000-8000-000000000006
+		sourceLineageTag: YearQuarterNumber
+		summarizeBy: none
+		sourceColumn: YearQuarterNumber
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		dataType: string
+		lineageTag: c0000003-0000-4000-8000-000000000007
+		sourceLineageTag: Quarter
+		summarizeBy: none
+		sourceColumn: Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Month'
+		dataType: string
+		lineageTag: c0000003-0000-4000-8000-000000000008
+		sourceLineageTag: YearMonth
+		summarizeBy: none
+		sourceColumn: YearMonth
+		sortByColumn: 'Year Month Number'
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Month Short'
+		dataType: string
+		lineageTag: c0000003-0000-4000-8000-000000000009
+		sourceLineageTag: YearMonthShort
+		summarizeBy: none
+		sourceColumn: YearMonthShort
+		sortByColumn: 'Year Month Number'
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Month Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: c0000003-0000-4000-8000-00000000000a
+		sourceLineageTag: YearMonthNumber
+		summarizeBy: none
+		sourceColumn: YearMonthNumber
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: c0000003-0000-4000-8000-00000000000b
+		sourceLineageTag: Month
+		summarizeBy: none
+		sourceColumn: Month
+		sortByColumn: 'Month Number'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Short'
+		dataType: string
+		lineageTag: c0000003-0000-4000-8000-00000000000c
+		sourceLineageTag: MonthShort
+		summarizeBy: none
+		sourceColumn: MonthShort
+		sortByColumn: 'Month Number'
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: c0000003-0000-4000-8000-00000000000d
+		sourceLineageTag: MonthNumber
+		summarizeBy: none
+		sourceColumn: MonthNumber
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of Week'
+		dataType: string
+		lineageTag: c0000003-0000-4000-8000-00000000000e
+		sourceLineageTag: DayofWeek
+		summarizeBy: none
+		sourceColumn: DayofWeek
+		sortByColumn: 'Day of Week Number'
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of Week Short'
+		dataType: string
+		lineageTag: c0000003-0000-4000-8000-00000000000f
+		sourceLineageTag: DayofWeekShort
+		summarizeBy: none
+		sourceColumn: DayofWeekShort
+		sortByColumn: 'Day of Week Number'
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of Week Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: c0000003-0000-4000-8000-000000000010
+		sourceLineageTag: DayofWeekNumber
+		summarizeBy: none
+		sourceColumn: DayofWeekNumber
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Working Day'
+		dataType: int64
+		formatString: 0
+		lineageTag: c0000003-0000-4000-8000-000000000011
+		sourceLineageTag: WorkingDay
+		summarizeBy: none
+		sourceColumn: WorkingDay
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Working Day Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: c0000003-0000-4000-8000-000000000012
+		sourceLineageTag: WorkingDayNumber
+		summarizeBy: none
+		sourceColumn: WorkingDayNumber
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Date = entity
+		mode: directLake
+		source
+			entityName: date
+			schemaName: dbo
+			expressionSource: 'DirectLake - Contoso'
+
+	calendar Gregorian
+		lineageTag: c0000003-0000-4000-8000-0000000000c0
+
+		calendarColumnGroup = year
+			primaryColumn: Year
+
+		calendarColumnGroup = quarter
+			primaryColumn: 'Year Quarter Number'
+			associatedColumn: 'Year Quarter'
+
+		calendarColumnGroup = quarterOfYear
+			primaryColumn: Quarter
+
+		calendarColumnGroup = month
+			primaryColumn: 'Year Month Number'
+			associatedColumn: 'Year Month'
+			associatedColumn: 'Year Month Short'
+
+		calendarColumnGroup = monthOfYear
+			primaryColumn: 'Month Number'
+			associatedColumn: Month
+			associatedColumn: 'Month Short'
+
+		calendarColumnGroup = date
+			primaryColumn: Date
+			associatedColumn: 'Date Key'
+
+		calendarColumnGroup = dayOfWeek
+			primaryColumn: 'Day of Week Number'
+			associatedColumn: 'Day of Week'
+			associatedColumn: 'Day of Week Short'
+
+	changedProperty = Name
+
+	annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["DATECOLUMN_FORMATSTRING"]}
+
