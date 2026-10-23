@@ -1,0 +1,198 @@
+/// Gregorian calendar dimension. Marked as a Date table (dataCategory: Time)
+/// for classic time intelligence (SAMEPERIODLASTYEAR, etc.) AND carries a
+/// Gregorian calendar child object for the new calendar-based time intel
+/// functions (requires compatibilityLevel >= 1701).
+table Date
+	lineageTag: c0000003-0000-4000-8000-000000000001
+	dataCategory: Time
+
+	column Date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c0000003-0000-4000-8000-000000000002
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date Key'
+		dataType: string
+		lineageTag: c0000003-0000-4000-8000-000000000003
+		summarizeBy: none
+		sourceColumn: DateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of Week'
+		dataType: string
+		lineageTag: c0000003-0000-4000-8000-00000000000e
+		summarizeBy: none
+		sourceColumn: DayofWeek
+		sortByColumn: 'Day of Week Number'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of Week Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: c0000003-0000-4000-8000-000000000010
+		summarizeBy: none
+		sourceColumn: DayofWeekNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of Week Short'
+		dataType: string
+		lineageTag: c0000003-0000-4000-8000-00000000000f
+		summarizeBy: none
+		sourceColumn: DayofWeekShort
+		sortByColumn: 'Day of Week Number'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: c0000003-0000-4000-8000-00000000000b
+		summarizeBy: none
+		sourceColumn: Month
+		sortByColumn: 'Month Number'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: c0000003-0000-4000-8000-00000000000d
+		summarizeBy: none
+		sourceColumn: MonthNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Short'
+		dataType: string
+		lineageTag: c0000003-0000-4000-8000-00000000000c
+		summarizeBy: none
+		sourceColumn: MonthShort
+		sortByColumn: 'Month Number'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		dataType: string
+		lineageTag: c0000003-0000-4000-8000-000000000007
+		summarizeBy: none
+		sourceColumn: Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Working Day'
+		dataType: int64
+		formatString: 0
+		lineageTag: c0000003-0000-4000-8000-000000000011
+		summarizeBy: none
+		sourceColumn: WorkingDay
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Working Day Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: c0000003-0000-4000-8000-000000000012
+		summarizeBy: none
+		sourceColumn: WorkingDayNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: c0000003-0000-4000-8000-000000000004
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Month'
+		dataType: string
+		lineageTag: c0000003-0000-4000-8000-000000000008
+		summarizeBy: none
+		sourceColumn: YearMonth
+		sortByColumn: 'Year Month Number'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Month Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: c0000003-0000-4000-8000-00000000000a
+		summarizeBy: none
+		sourceColumn: YearMonthNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Month Short'
+		dataType: string
+		lineageTag: c0000003-0000-4000-8000-000000000009
+		summarizeBy: none
+		sourceColumn: YearMonthShort
+		sortByColumn: 'Year Month Number'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Quarter'
+		dataType: string
+		lineageTag: c0000003-0000-4000-8000-000000000005
+		summarizeBy: none
+		sourceColumn: YearQuarter
+		sortByColumn: 'Year Quarter Number'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Quarter Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: c0000003-0000-4000-8000-000000000006
+		summarizeBy: none
+		sourceColumn: YearQuarterNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Date = entity
+		mode: directLake
+		source
+			entityName: date
+			schemaName: dbo
+			expressionSource: 'DirectLake - Contoso'
+
+	calendar Gregorian
+		lineageTag: c0000003-0000-4000-8000-0000000000c0
+
+		calendarColumnGroup = year
+			primaryColumn: Year
+
+		calendarColumnGroup = quarter
+			primaryColumn: 'Year Quarter Number'
+			associatedColumn: 'Year Quarter'
+
+		calendarColumnGroup = quarterOfYear
+			primaryColumn: Quarter
+
+		calendarColumnGroup = month
+			primaryColumn: 'Year Month Number'
+			associatedColumn: 'Year Month'
+			associatedColumn: 'Year Month Short'
+
+		calendarColumnGroup = monthOfYear
+			primaryColumn: 'Month Number'
+			associatedColumn: Month
+			associatedColumn: 'Month Short'
+
+		calendarColumnGroup = date
+			primaryColumn: Date
+			associatedColumn: 'Date Key'
+
+		calendarColumnGroup = dayOfWeek
+			primaryColumn: 'Day of Week Number'
+			associatedColumn: 'Day of Week'
+			associatedColumn: 'Day of Week Short'
+

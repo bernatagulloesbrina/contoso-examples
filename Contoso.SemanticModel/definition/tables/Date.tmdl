@@ -209,6 +209,8 @@ table Date
 			schemaName: dbo
 			expressionSource: 'DirectLake - Contoso'
 
+	changedProperty = Name
+
 	calendar Gregorian
 		lineageTag: c0000003-0000-4000-8000-0000000000c0
 
@@ -240,8 +242,6 @@ table Date
 			primaryColumn: 'Day of Week Number'
 			associatedColumn: 'Day of Week'
 			associatedColumn: 'Day of Week Short'
-
-	changedProperty = Name
 
 	annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["DATECOLUMN_FORMATSTRING"]}
 

@@ -10,6 +10,8 @@ annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBI_ProTooling = ["DevMode","TMDLView_Desktop","TMDL-Extension"]
 
+annotation __TEdtr = 1
+
 ref table Customer
 ref table Product
 ref table Date

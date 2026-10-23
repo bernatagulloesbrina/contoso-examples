@@ -1,0 +1,6 @@
+/// Year-to-date: evaluates the measure expression over DATESYTD of the Date table.
+function 'Local.TimeIntel.YTD' =
+		(m: ANYREF) =>
+		    CALCULATE(m, DATESYTD('Gregorian'))
+	lineageTag: c0000007-0000-4000-8000-000000000001
+

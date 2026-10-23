@@ -1,38 +1,38 @@
 /// Year-to-date: evaluates the measure expression over DATESYTD of the Date table.
 function 'Local.TimeIntel.YTD' =
 		(m: ANYREF) =>
-		    CALCULATE(m, DATESYTD('Date'[Date]))
+		    CALCULATE(m, DATESYTD('Gregorian'))
 	lineageTag: c0000007-0000-4000-8000-000000000001
 
 /// Quarter-to-date: evaluates the measure expression over DATESQTD of the Date table.
 function 'Local.TimeIntel.QTD' =
 		(m: ANYREF) =>
-		    CALCULATE(m, DATESQTD('Date'[Date]))
+		    CALCULATE(m, DATESQTD('Gregorian'))
 	lineageTag: c0000007-0000-4000-8000-000000000002
 
 /// Month-to-date: evaluates the measure expression over DATESMTD of the Date table.
 function 'Local.TimeIntel.MTD' =
 		(m: ANYREF) =>
-		    CALCULATE(m, DATESMTD('Date'[Date]))
+		    CALCULATE(m, DATESMTD('Gregorian'))
 	lineageTag: c0000007-0000-4000-8000-000000000003
 
 /// Prior year: evaluates the measure expression in the same period one year ago.
 function 'Local.TimeIntel.PY' =
 		(m: ANYREF) =>
-		    CALCULATE(m, SAMEPERIODLASTYEAR('Date'[Date]))
+		    CALCULATE(m, SAMEPERIODLASTYEAR('Gregorian'))
 	lineageTag: c0000007-0000-4000-8000-000000000004
 
 /// Prior year-to-date: evaluates the measure expression over YTD of the prior year.
 function 'Local.TimeIntel.PYTD' =
 		(m: ANYREF) =>
-		    CALCULATE(m, DATESYTD(SAMEPERIODLASTYEAR('Date'[Date])))
+		    CALCULATE( CALCULATE( m, DATESYTD( 'Gregorian' ) ), SAMEPERIODLASTYEAR( Gregorian ) )
 	lineageTag: c0000007-0000-4000-8000-000000000005
 
 /// Year-over-year delta: current value minus prior year value.
 function 'Local.TimeIntel.YoY' =
 		(m: ANYREF) =>
 		    VAR _curr = m
-		    VAR _py = CALCULATE(m, SAMEPERIODLASTYEAR('Date'[Date]))
+		    VAR _py = CALCULATE(m, SAMEPERIODLASTYEAR('Gregorian'))
 		    RETURN _curr - _py
 	lineageTag: c0000007-0000-4000-8000-000000000006
 
@@ -40,7 +40,7 @@ function 'Local.TimeIntel.YoY' =
 function 'Local.TimeIntel.YoYPct' =
 		(m: ANYREF) =>
 		    VAR _curr = m
-		    VAR _py = CALCULATE(m, SAMEPERIODLASTYEAR('Date'[Date]))
+		    VAR _py = CALCULATE(m, SAMEPERIODLASTYEAR('Gregorian'))
 		    RETURN DIVIDE(_curr - _py, _py)
 	lineageTag: c0000007-0000-4000-8000-000000000007
 

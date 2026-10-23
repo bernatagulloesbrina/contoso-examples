@@ -66,6 +66,8 @@ table 'Order Rows'
 		displayFolder: Time Intelligence
 		lineageTag: c0000005-0000-4000-8000-00000000ff30
 
+		annotation IsMaster = 1
+
 	/// Margin in the same period of the previous year.
 	measure 'Margin PY' = Local.TimeIntel.PY([Margin])
 		formatString: \$#,0;(\$#,0);\$#,0

@@ -123,9 +123,9 @@ table Customer
 		dataType: string
 		lineageTag: c0000001-0000-4000-8000-00000000000d
 		sourceLineageTag: City
+		dataCategory: City
 		summarizeBy: none
 		sourceColumn: City
-		dataCategory: City
 
 		annotation SummarizationSetBy = Automatic
 
@@ -133,9 +133,9 @@ table Customer
 		dataType: string
 		lineageTag: c0000001-0000-4000-8000-00000000000e
 		sourceLineageTag: State
+		dataCategory: StateOrProvince
 		summarizeBy: none
 		sourceColumn: State
-		dataCategory: StateOrProvince
 
 		annotation SummarizationSetBy = Automatic
 
@@ -143,9 +143,9 @@ table Customer
 		dataType: string
 		lineageTag: c0000001-0000-4000-8000-00000000000f
 		sourceLineageTag: StateFull
+		dataCategory: StateOrProvince
 		summarizeBy: none
 		sourceColumn: StateFull
-		dataCategory: StateOrProvince
 
 		changedProperty = Name
 
@@ -155,9 +155,9 @@ table Customer
 		dataType: string
 		lineageTag: c0000001-0000-4000-8000-000000000010
 		sourceLineageTag: ZipCode
+		dataCategory: PostalCode
 		summarizeBy: none
 		sourceColumn: ZipCode
-		dataCategory: PostalCode
 
 		changedProperty = Name
 
@@ -167,9 +167,9 @@ table Customer
 		dataType: string
 		lineageTag: c0000001-0000-4000-8000-000000000011
 		sourceLineageTag: Country
+		dataCategory: Country
 		summarizeBy: none
 		sourceColumn: Country
-		dataCategory: Country
 
 		annotation SummarizationSetBy = Automatic
 
@@ -177,9 +177,9 @@ table Customer
 		dataType: string
 		lineageTag: c0000001-0000-4000-8000-000000000012
 		sourceLineageTag: CountryFull
+		dataCategory: Country
 		summarizeBy: none
 		sourceColumn: CountryFull
-		dataCategory: Country
 
 		changedProperty = Name
 
@@ -236,9 +236,9 @@ table Customer
 		dataType: decimal
 		lineageTag: c0000001-0000-4000-8000-000000000018
 		sourceLineageTag: Latitude
+		dataCategory: Latitude
 		summarizeBy: none
 		sourceColumn: Latitude
-		dataCategory: Latitude
 
 		annotation SummarizationSetBy = Automatic
 
@@ -246,9 +246,9 @@ table Customer
 		dataType: decimal
 		lineageTag: c0000001-0000-4000-8000-000000000019
 		sourceLineageTag: Longitude
+		dataCategory: Longitude
 		summarizeBy: none
 		sourceColumn: Longitude
-		dataCategory: Longitude
 
 		annotation SummarizationSetBy = Automatic
 

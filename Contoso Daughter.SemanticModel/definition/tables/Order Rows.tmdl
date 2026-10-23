@@ -1,0 +1,93 @@
+table 'Order Rows'
+	lineageTag: c0000005-0000-4000-8000-000000000001
+
+	measure 'Sales Amount' = SUMX('Order Rows', 'Order Rows'[Quantity] * 'Order Rows'[Net Price])
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: c0000005-0000-4000-8000-00000000ff01
+
+	measure 'Total Cost' = SUMX('Order Rows', 'Order Rows'[Quantity] * 'Order Rows'[Unit Cost])
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: c0000005-0000-4000-8000-00000000ff02
+
+	measure Margin = [Sales Amount] - [Total Cost]
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: c0000005-0000-4000-8000-00000000ff03
+
+	/// Margin, year-to-date.
+	measure 'Margin YTD' = Local.TimeIntel.YTD([Margin])
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: 'Time Intelligence'
+		lineageTag: c0000005-0000-4000-8000-00000000ff30
+
+		annotation IsMaster = 0
+
+	column 'Net Price'
+		dataType: decimal
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: c0000005-0000-4000-8000-000000000007
+		summarizeBy: sum
+		sourceColumn: NetPrice
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: c0000005-0000-4000-8000-000000000002
+		summarizeBy: none
+		sourceColumn: OrderKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: c0000005-0000-4000-8000-000000000004
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: int64
+		formatString: #,0
+		lineageTag: c0000005-0000-4000-8000-000000000005
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Row Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: c0000005-0000-4000-8000-000000000003
+		summarizeBy: none
+		sourceColumn: RowNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unit Cost'
+		dataType: decimal
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: c0000005-0000-4000-8000-000000000008
+		summarizeBy: sum
+		sourceColumn: UnitCost
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unit Price'
+		dataType: decimal
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: c0000005-0000-4000-8000-000000000006
+		summarizeBy: sum
+		sourceColumn: UnitPrice
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Order Rows' = entity
+		mode: directLake
+		source
+			entityName: orderrows
+			schemaName: dbo
+			expressionSource: 'DirectLake - Contoso'
+
